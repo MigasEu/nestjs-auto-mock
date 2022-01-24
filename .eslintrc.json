@@ -18,6 +18,8 @@
         "no-empty-function": "warn",
         "no-useless-constructor": "off",
         "max-classes-per-file": ["error", 3],
-        "max-len": ["error", 150]
+        "max-len": ["error", 150],
+        "import/prefer-default-export": "off",
+        "import/no-default-export": "error"
     }
 }

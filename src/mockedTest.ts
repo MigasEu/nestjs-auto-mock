@@ -40,12 +40,14 @@ export abstract class MockedTest extends Test {
       }
 
       const moduleProviders = Reflect.getMetadata('providers' as keyof ModuleMetadata, moduleClass) as Provider[];
-      providers = [
-        ...providers,
-        ...moduleProviders
-          .map((provider) => MockedTest.transformFactoryProvider(provider))
-          .filter((p) => p !== undefined),
-      ];
+      if (moduleProviders?.length) {
+        providers = [
+          ...providers,
+          ...moduleProviders
+            .map((provider) => MockedTest.transformFactoryProvider(provider))
+            .filter((p) => p !== undefined),
+        ];
+      }
     }
 
     return providers;
