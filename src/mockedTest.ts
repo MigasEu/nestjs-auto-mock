@@ -14,7 +14,7 @@ import { MockedModuleBuilder } from './mockedModule';
 
 export type MockedModuleMetadata = Omit<Omit<ModuleMetadata, 'controllers'>, 'exports'>;
 
-export type MockedModuleBuilderFactory<M extends any, S extends any, MMB = MockedModuleBuilder<M, S>> = (
+export type MockedModuleBuilderFactory<M, S, MMB = MockedModuleBuilder<M, S>> = (
   metadata: ModuleMetadata,
   metadataToMock: MockedModuleMetadata,
   deepModuleMock: boolean,
@@ -23,7 +23,7 @@ export type MockedModuleBuilderFactory<M extends any, S extends any, MMB = Mocke
 export abstract class MockedTest extends Test {
   static createMockedModule: MockedModuleBuilderFactory<any, any>;
 
-  static providersFromModules<T extends any>(
+  static providersFromModules<T>(
     modules: Array<Type<T> | DynamicModule | Promise<DynamicModule> | ForwardReference>,
     deep = true,
   ): Provider[] {
@@ -54,7 +54,7 @@ export abstract class MockedTest extends Test {
     return providers;
   }
 
-  protected static transformFactoryProvider<T extends any>(realProvider: Provider): Provider<T> {
+  protected static transformFactoryProvider<T>(realProvider: Provider): Provider<T> {
     const providerClass = realProvider as ClassProvider;
     const providerFactory = realProvider as FactoryProvider;
     const providerValue = realProvider as ValueProvider;

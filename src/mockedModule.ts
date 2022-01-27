@@ -17,7 +17,7 @@ import { TestingModule, TestingModuleBuilder } from '@nestjs/testing';
 
 export type PublicPart<T> = { [K in keyof T]: T[K] };
 
-export abstract class MockedModule<M extends any, S extends any>
+export abstract class MockedModule<M, S>
   implements Omit<Omit<PublicPart<TestingModule>, 'init'>, 'enableShutdownHooks'>
 {
   constructor(protected parent: TestingModule) {}
@@ -88,10 +88,6 @@ export abstract class MockedModule<M extends any, S extends any>
   }
 }
 
-export abstract class MockedModuleBuilder<
-  M extends any,
-  S extends any,
-  MM = MockedModule<M, S>,
-> extends TestingModuleBuilder {
+export abstract class MockedModuleBuilder<M, S, MM = MockedModule<M, S>> extends TestingModuleBuilder {
   abstract compileMocked(): Promise<MM>;
 }
