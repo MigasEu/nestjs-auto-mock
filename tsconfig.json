@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": "./dist",
     "declaration": true,
-    "noImplicitAny": false,
-    "skipLibCheck": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": false,
-    "importHelpers": true,
-    "removeComments": false,
-    "noLib": false,
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "target": "es2017",
-    "sourceMap": false,
-    "allowJs": false,
-    "strict": true,
-    "strictNullChecks": false
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false
   },
   "include": ["src/**/*"]
 }

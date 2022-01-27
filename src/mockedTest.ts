@@ -9,6 +9,7 @@ import {
   ValueProvider,
 } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+
 import { MockedModuleBuilder } from './mockedModule';
 
 export type MockedModuleMetadata = Omit<Omit<ModuleMetadata, 'controllers'>, 'exports'>;
