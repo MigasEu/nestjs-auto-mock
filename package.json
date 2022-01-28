@@ -8,11 +8,12 @@
     "/dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier \"src/**/*.ts\"",
+    "prettier": "prettier src/**/*.ts",
+    "prettier:check": "npm run prettier -- -c",
     "prettier:fix": "npm run prettier -- --write",
-    "eslint": "eslint \"src/**/*.ts\"",
+    "eslint:check": "eslint \"src/**/*.ts\"",
     "eslint:fix": "npm run eslint -- --fix"
   },
   "author": "MigasEu",
