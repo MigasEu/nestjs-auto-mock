@@ -8,11 +8,12 @@
     "/dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier \"src/**/*.ts\"",
+    "prettier": "prettier src/**/*.ts",
+    "prettier:check": "npm run prettier -- -c",
     "prettier:fix": "npm run prettier -- --write",
-    "eslint": "eslint \"src/**/*.ts\"",
+    "eslint:check": "eslint \"src/**/*.ts\"",
     "eslint:fix": "npm run eslint -- --fix"
   },
   "author": "MigasEu",
@@ -25,12 +26,12 @@
     "rxjs": "^6.6.7 || ^7.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "^7.25.0",
-    "eslint-config-airbnb": "^18.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "2.2.1"
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
   }
 }
