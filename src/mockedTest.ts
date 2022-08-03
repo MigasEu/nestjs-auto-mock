@@ -23,24 +23,23 @@ export type MockedModuleBuilderFactory<M, S, MMB = MockedModuleBuilder<M, S>> = 
 export abstract class MockedTest extends Test {
   static createMockedModule: MockedModuleBuilderFactory<any, any>;
 
-  static providersFromModules<T>(
+  static async providersFromModules<T>(
     modules: Array<Type<T> | DynamicModule | Promise<DynamicModule> | ForwardReference>,
     deep = true,
-  ): Provider[] {
+  ): Promise<Provider[]> {
     let providers = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const moduleClass of modules) {
+      const modulePlainMetadata = (await moduleClass) as DynamicModule;
       if (deep) {
-        providers = [
-          ...providers,
-          ...MockedTest.providersFromModules(
-            Reflect.getMetadata('imports' as keyof ModuleMetadata, moduleClass) ?? [],
-            deep,
-          ),
-        ];
+        const innerImports =
+          Reflect.getMetadata('imports' as keyof ModuleMetadata, moduleClass) ?? modulePlainMetadata.imports;
+        providers = [...providers, ...(await MockedTest.providersFromModules(innerImports ?? [], deep))];
       }
 
-      const moduleProviders = Reflect.getMetadata('providers' as keyof ModuleMetadata, moduleClass) as Provider[];
+      const moduleProviders =
+        (Reflect.getMetadata('providers' as keyof ModuleMetadata, moduleClass) as Provider[]) ??
+        modulePlainMetadata.providers;
       if (moduleProviders?.length) {
         providers = [
           ...providers,
