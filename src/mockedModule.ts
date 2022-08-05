@@ -15,6 +15,10 @@ import { NestMicroserviceOptions } from '@nestjs/common/interfaces/microservices
 import { AbstractHttpAdapter, ContextId } from '@nestjs/core';
 import { TestingModule, TestingModuleBuilder } from '@nestjs/testing';
 
+export type TypeOrToken<TInput = any> = Type<TInput> | Abstract<TInput> | string | symbol;
+
+export type MockMap = Map<TypeOrToken<any>, any>;
+
 export type PublicPart<T> = { [K in keyof T]: T[K] };
 
 export abstract class MockedModule<M, S>
