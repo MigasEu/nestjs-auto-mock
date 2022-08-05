@@ -14,7 +14,7 @@
     "prettier:check": "npm run prettier -- -c",
     "prettier:fix": "npm run prettier -- --write",
     "eslint:check": "eslint \"src/**/*.ts\"",
-    "eslint:fix": "npm run eslint -- --fix"
+    "eslint:fix": "npm run eslint:check -- --fix"
   },
   "author": "MigasEu",
   "license": "ISC",
