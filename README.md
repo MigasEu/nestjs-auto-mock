@@ -65,7 +65,7 @@ Check creation example [here](#addon-creation-example)
 
 ## Usage Example
 
-This example uses the ts-mockito implementation, with the .
+This example uses the ts-mockito implementation, so the created mocks are mockito's mocks.
 
 ```typescript
   beforeEach(async () => {
